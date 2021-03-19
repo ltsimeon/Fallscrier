@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Fallscrier</string>
+    <string name="search_text">Input search terms here (ex. cmc, power, toughness, color, type)</string>
+    <string name="search_hint">Enter search terms...</string>
+    <string name="go_button">Search!</string>
+    <string name="share_action">Share...</string>
+    <string name="color_action">Color...</string>
+    <string name="about_action">About</string>
+    <string name="about">App developed by Loki Simeon, using Scryfall\'s wonderful MtG API</string>
+</resources>
