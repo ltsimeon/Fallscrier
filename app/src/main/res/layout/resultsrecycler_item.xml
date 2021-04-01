@@ -6,12 +6,32 @@
     android:orientation="vertical"
     android:padding="6dp">
 
-    <TextView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/formatted_card"
-        android:text=""
-        tools:ignore="InvalidId" />
+        android:id="@+id/card_in_view">
+
+        <!-- 92dp by 72dp is a translation of the 2.3 by 1.8 inch standard size for mtg art.
+        This keeps the thumbnail size we want while maintaining the art's intended aspect ratio. -->
+
+        <ImageView
+            android:id="@+id/card_thumbnail"
+            android:layout_width="92dp"
+            android:layout_height="72dp"
+            android:maxWidth="92dp"
+            android:maxHeight="72dp"
+            android:layout_gravity="left" />
+
+        <TextView
+            android:id="@+id/formatted_card_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:paddingLeft="96dp"
+            android:text=""
+            tools:ignore="InvalidId" />
+
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>
 

@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/results_layout">
+    android:id="@+id/results_layout"
+    android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_results"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="55dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/results_recycler"
+    <fragment
         android:layout_width="match_parent"
-        android:layout_height="750dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_results" />
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_search_result"
+        android:name="edu.quinnipiac.ser210.fallscrier.SearchResultFragment"
+        tools:layout="@layout/fragment_search_result" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

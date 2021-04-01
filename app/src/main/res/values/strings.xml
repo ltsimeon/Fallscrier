@@ -7,4 +7,5 @@
     <string name="color_action">Color...</string>
     <string name="about_action">About</string>
     <string name="about">App developed by Loki Simeon, using Scryfall\'s wonderful MtG API</string>
+    <string name="searchSplashText">Input search terms here (ex. cmc, power, toughness, color, type)</string>
 </resources>

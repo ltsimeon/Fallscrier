@@ -1,41 +1,35 @@
 package edu.quinnipiac.ser210.fallscrier;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import java.util.LinkedList;
 
 public class SearchResultActivity extends AppCompatActivity {
 
-    private ConstraintLayout constraintLayout;
     private String query;
     private SearchAPIHandler searchAPIHandler;
     private RecyclerView rv;
-    private RecyclerView.Adapter rva;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
         setSupportActionBar(findViewById(R.id.toolbar_results));
-        constraintLayout = findViewById(R.id.results_layout);
-        constraintLayout.setBackgroundColor(getResources().getColor(MainActivity.colors[MainActivity.colorPointer])); // so search results have same BG color
 
-        rv = (RecyclerView) findViewById(R.id.results_recycler);
+        Fragment fragment = (Fragment) getSupportFragmentManager().findFragmentById(R.id.fragment_search_result);
+        rv = (RecyclerView) fragment.getView();
+        rv.setBackgroundColor(getResources().getColor(MainActivity.colors[MainActivity.colorPointer]));
 
-        // And now the REST magic begins.
+        // Call upon the Scryfall API itself to handle our search query
         Intent intent = getIntent();
         query = intent.getStringExtra("query");
         searchAPIHandler = new SearchAPIHandler(getApplicationContext(),rv);
@@ -53,7 +47,7 @@ public class SearchResultActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.colorItem:
                 MainActivity.colorPointer = (MainActivity.colorPointer+1)%5;
-                constraintLayout.setBackgroundColor(getResources().getColor(MainActivity.colors[MainActivity.colorPointer]));
+                rv.setBackgroundColor(getResources().getColor(MainActivity.colors[MainActivity.colorPointer]));
                 return true;
             case R.id.aboutItem:
                 Toast.makeText(this,R.string.about,Toast.LENGTH_LONG).show();
@@ -71,4 +65,5 @@ public class SearchResultActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
 }
